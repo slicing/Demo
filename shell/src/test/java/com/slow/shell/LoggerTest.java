@@ -21,6 +21,6 @@ public class LoggerTest {
 		/*logger.debug("debug....");
 		logger.info("info....");
 		logger.error("error...");*/
-		log.info("");
+		log.info("info.....");
 	}
 }

@@ -83,7 +83,7 @@ public class OrderServiceImplTest {
 	public void finish() {
 		OrderDto orderDto = orderService.findOne(ORDER_ID);
 		OrderDto result = orderService.finish(orderDto);
-		Assert.assertEquals(OrderStatusEnum.FINISGED.getCode(),result.getOrderStatus());
+		Assert.assertEquals(OrderStatusEnum.FINISHED.getCode(),result.getOrderStatus());
 	}
 
 	@Test

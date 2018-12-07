@@ -140,7 +140,7 @@ public class OrderServiceImpl implements OrderService {
 			throw new SellException(ResultEnum.PRODUCT_STOCK_ERROR);
 		}
 		//修改状态
-		orderDto.setOrderStatus(OrderStatusEnum.FINISGED.getCode());
+		orderDto.setOrderStatus(OrderStatusEnum.FINISHED.getCode());
 		OrderMaster orderMaster = new OrderMaster();
 		BeanUtils.copyProperties(orderDto,orderMaster);
 		OrderMaster updateResult = orderMasterRespository.save(orderMaster);

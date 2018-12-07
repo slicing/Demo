@@ -1,6 +1,6 @@
 package com.slow.shell.enums;
 
-import lombok.Data;
+
 import lombok.Getter;
 
 /**
@@ -10,7 +10,7 @@ import lombok.Getter;
 @Getter
 public enum OrderStatusEnum implements CodeEnum {
 	NEW(0,"新订单"),
-	FINISGED(1,"完结"),
+	FINISHED(1,"完结"),
 	CANCEL(2,"已取消"),
 			;
 	private Integer code;

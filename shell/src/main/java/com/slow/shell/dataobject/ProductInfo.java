@@ -1,11 +1,15 @@
 package com.slow.shell.dataobject;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.slow.shell.enums.OrderStatusEnum;
+import com.slow.shell.enums.ProductStatusEnum;
+import com.slow.shell.util.EnumUtil;
 import lombok.Data;
+import org.hibernate.annotations.DynamicUpdate;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.math.BigDecimal;
+import java.util.Date;
 
 /**
  * 商品
@@ -15,6 +19,7 @@ import java.math.BigDecimal;
 @Entity
 @Data
 @Table(name = "product_info")
+@DynamicUpdate
 public class ProductInfo {
 	@Id
 	private String productId;
@@ -32,18 +37,15 @@ public class ProductInfo {
 	/*类目编号*/
 	private Integer categoryType;
 	/*状态，0正常，1下架*/
-	private Integer productStatus;
-	public ProductInfo() {
-	}
+	private Integer productStatus = ProductStatusEnum.UP.getCode();
+	/*创建时间*/
+	private Date createTime;
+	/*修改时间*/
+	private Date updateTime;
 
-	public ProductInfo(String productId, String productName, BigDecimal productPrice, Integer productStock, String productDescription, String productIcon, Integer productStatus, Integer categoryType) {
-		this.productId = productId;
-		this.productName = productName;
-		this.productPrice = productPrice;
-		this.productStock = productStock;
-		this.productDescription = productDescription;
-		this.productIcon = productIcon;
-		this.productStatus = productStatus;
-		this.categoryType = categoryType;
+
+	@JsonIgnore
+	public ProductStatusEnum getProductStatusEnum(){
+		return EnumUtil.getByCode(productStatus,ProductStatusEnum.class);
 	}
 }

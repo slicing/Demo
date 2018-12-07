@@ -14,6 +14,7 @@ import com.slow.shell.exception.SellException;
 import com.slow.shell.repository.OrderDetailRespository;
 import com.slow.shell.repository.OrderMasterRespository;
 import com.slow.shell.service.OrderService;
+import com.slow.shell.service.PayService;
 import com.slow.shell.service.ProductService;
 import com.slow.shell.util.KeyUtil;
 import org.springframework.beans.BeanUtils;
@@ -42,6 +43,8 @@ public class OrderServiceImpl implements OrderService {
 	private OrderDetailRespository orderDetailRespository;
 	@Autowired
 	private OrderMasterRespository orderMasterRespository;
+	@Autowired
+	private PayService payService;
 	@Override
 	@Transactional
 	public OrderDto create(OrderDto orderDto) {
@@ -124,7 +127,7 @@ public class OrderServiceImpl implements OrderService {
 		productService.increaseStock(cartDTOList);
 		//如果已支付退款
 		if (orderDto.getPayStatus().equals(PayStatusEnum.SUCCESS.getCode())){
-			//TODO
+			payService.refund(orderDto);
 		}
 		return orderDto;
 	}
@@ -165,5 +168,12 @@ public class OrderServiceImpl implements OrderService {
 		if(updateResult == null)
 			throw new SellException(ResultEnum.ORDER_UPDATE_FAIL);
 		return orderDto;
+	}
+
+	@Override
+	public Page<OrderDto> findList(Pageable pageable) {
+		Page<OrderMaster> orderMasterPage = orderMasterRespository.findAll(pageable);
+		List<OrderDto> orderDtoList = OrderMasterTOderDTOConverter.convert(orderMasterPage.getContent());
+		return new PageImpl<OrderDto>(orderDtoList,pageable,orderMasterPage.getTotalElements());
 	}
 }

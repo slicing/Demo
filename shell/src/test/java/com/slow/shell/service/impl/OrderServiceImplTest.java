@@ -64,6 +64,13 @@ public class OrderServiceImplTest {
 		Page<OrderDto> orderDtoPage =  orderService.findList(BUYER_OPENID,result);
 		Assert.assertNotEquals(0,orderDtoPage.getTotalElements());
 	}
+	@Test
+	public void list(){
+		PageRequest request = PageRequest.of(0,2);
+		Page<OrderDto> orderDtoPage = orderService.findList(request);
+		//Assert.assertNotEquals(0,orderDtoPage.getTotalElements());
+		Assert.assertTrue("查询所有订单",orderDtoPage.getTotalElements()>0);
+	}
 
 	@Test
 	public void cancel() {

@@ -13,9 +13,7 @@ import com.slow.shell.enums.ResultEnum;
 import com.slow.shell.exception.SellException;
 import com.slow.shell.repository.OrderDetailRespository;
 import com.slow.shell.repository.OrderMasterRespository;
-import com.slow.shell.service.OrderService;
-import com.slow.shell.service.PayService;
-import com.slow.shell.service.ProductService;
+import com.slow.shell.service.*;
 import com.slow.shell.util.KeyUtil;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -45,6 +43,12 @@ public class OrderServiceImpl implements OrderService {
 	private OrderMasterRespository orderMasterRespository;
 	@Autowired
 	private PayService payService;
+	@Autowired
+	private PushMessageService messageService;
+	@Autowired
+	private PushMessageService pushMessageService;
+	@Autowired
+	private WebSocket webSocket;
 	@Override
 	@Transactional
 	public OrderDto create(OrderDto orderDto) {
@@ -80,6 +84,9 @@ public class OrderServiceImpl implements OrderService {
 				.map(e -> new CartDTO(e.getProductId(),e.getProductQuantity()))
 				.collect(Collectors.toList());
 		productService.decreaseStock(cartDTOList);
+
+		//发送webSocket消息
+		webSocket.sendMessage("有新的订单");
 		return orderDto;
 	}
 
@@ -146,6 +153,8 @@ public class OrderServiceImpl implements OrderService {
 		OrderMaster updateResult = orderMasterRespository.save(orderMaster);
 		if(updateResult == null)
 			throw new SellException(ResultEnum.ORDER_UPDATE_FAIL);
+		//推送微信模板消息
+		messageService.orderStatus(orderDto);
 		return orderDto;
 
 	}

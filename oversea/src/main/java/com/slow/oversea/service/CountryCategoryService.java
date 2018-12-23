@@ -12,4 +12,6 @@ public interface CountryCategoryService {
 	CountryCategory findOne(Integer id);
 	List<CountryCategory> findAll();
 	CountryCategory findByName(String name);
+	void save(CountryCategory countryCategory);
+	void delete(CountryCategory countryCategory);
 }

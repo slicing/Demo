@@ -42,7 +42,17 @@ public class UniversityCategoryServiceImpl implements UniversityCategoryService 
 	}
 
 	@Override
-	public List<UniversityCategory> findUniversityNameByCountryId(Integer countryId) {
-		return repository.findUniversityNameByCountryId(countryId);
+	public List<UniversityCategory> findUniversityByCountryId(Integer countryId) {
+		return repository.findUniversityByCountryId(countryId);
+	}
+
+	@Override
+	public void save(UniversityCategory universityCategory) {
+		repository.save(universityCategory);
+	}
+
+	@Override
+	public void delete(UniversityCategory universityCategory) {
+		repository.delete(universityCategory);
 	}
 }

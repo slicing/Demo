@@ -5,6 +5,7 @@ import com.slow.oversea.dataobject.UserInfo;
 import com.slow.oversea.dto.StudentDTO;
 import com.slow.oversea.repository.UserInfoRepository;
 import com.slow.oversea.service.UserInfoService;
+import com.slow.oversea.utils.MD5;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -39,5 +40,10 @@ public class UserInfoServiceImpl implements UserInfoService {
 	@Override
 	public UserInfo save(UserInfo userInfo) {
 		return repository.save(userInfo);
+	}
+
+	@Override
+	public UserInfo getLocalAuthByUserNameAndUserPass(String userName, String passWord) {
+		return repository.queryLocalByUserNameAndUserPass(userName, MD5.getMd5(passWord));
 	}
 }

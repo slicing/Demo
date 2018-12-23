@@ -22,9 +22,10 @@ public class MajorServiceImpl implements MajorService {
 	}
 
 	@Override
-	public List<MajorInfo> findByMajorId(Integer majorId) {
-		return repository.findByMajorId(majorId);
+	public List<MajorInfo> findMajorInfoByUniversityId(Integer universityId) {
+		return repository.findMajorInfoByUniversityId(universityId);
 	}
+
 
 	@Override
 	public List<MajorInfo> findAll() {
@@ -36,8 +37,9 @@ public class MajorServiceImpl implements MajorService {
 		return repository.save(majorInfo);
 	}
 
+
 	@Override
-	public List<Integer> findUniversityId(Integer majorId) {
-		return repository.findUniversityIdByMajorId(majorId);
+	public void delete(MajorInfo majorInfo) {
+		repository.delete(majorInfo);
 	}
 }

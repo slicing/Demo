@@ -4,10 +4,10 @@
 <body>
 <div id="wrapper" class="toggled">
 
-    <#--边栏sidebar-->
+<#--边栏sidebar-->
     <#include "../common/nav.ftl">
 
-    <#--主要内容content-->
+<#--主要内容content-->
     <div id="page-content-wrapper">
         <div class="container-fluid">
             <div class="row clearfix">
@@ -21,11 +21,11 @@
                         </tr>
                         </thead>
                         <tbody>
-                        <#list countryCategoryList as countryCategory>
+                        <#list universityCategoryList as universityCategory>
                         <tr>
-                            <td>${countryCategory.countryId}</td>
-                            <td><a href="/oversea/university/country/list?countryId=${countryCategory.countryId}"> ${countryCategory.countryName}</a></td>
-                            <td><a href="/country/category/delete?categoryId=${countryCategory.countryId}">删除</a></td>
+                            <td>${universityCategory.universityId}</td>
+                            <td><a href="/major/university/list?universityId=${universityCategory.universityId}"> ${universityCategory.universityName}</a></td>
+                            <td><a href="/major/delete?categoryId=${universityCategory.universityId}">删除</a></td>
                         </tr>
                         </#list>
                         </tbody>

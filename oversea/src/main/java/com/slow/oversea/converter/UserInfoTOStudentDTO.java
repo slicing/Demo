@@ -1,8 +1,6 @@
 package com.slow.oversea.converter;
 
-import com.slow.oversea.dataobject.ApplicationTable;
 import com.slow.oversea.dataobject.UserInfo;
-import com.slow.oversea.dto.CartDTO;
 import com.slow.oversea.dto.StudentDTO;
 import org.springframework.beans.BeanUtils;
 

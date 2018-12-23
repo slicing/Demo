@@ -2,7 +2,7 @@
     <ul class="nav sidebar-nav">
         <li class="sidebar-brand">
             <a href="#">
-                后台管理系统
+                海外留学管理系统
             </a>
         </li>
         <li>
@@ -13,14 +13,13 @@
             <ul class="dropdown-menu" role="menu">
                 <li class="dropdown-header">操作</li>
                 <li><a href="/country/category/list">列表</a></li>
-                <li><a href="/country/category/index">新增</a></li>
             </ul>
         </li>
         <li class="dropdown open">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true"><i class="fa fa-fw fa-plus"></i> 学生 <span class="caret"></span></a>
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true"><i class="fa fa-fw fa-plus"></i> 修改密码 <span class="caret"></span></a>
             <ul class="dropdown-menu" role="menu">
                 <li class="dropdown-header" >操作</li>
-                <li><a href="/student/list">列表</a></li>
+                <li><a href="/student/list">修改</a></li>
                 <li>新增</li>
             </ul>
         </li>

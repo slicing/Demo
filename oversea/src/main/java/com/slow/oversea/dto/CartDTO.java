@@ -3,7 +3,7 @@ package com.slow.oversea.dto;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.slow.oversea.enums.ApplicationStatueEnum;
-import com.slow.oversea.util.Data2LongSerializer;
+import com.slow.oversea.utils.Data2LongSerializer;
 import com.slow.oversea.utils.EnumUtil;
 import lombok.Data;
 

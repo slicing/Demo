@@ -14,4 +14,5 @@ public interface UserInfoService {
 	UserInfo findByName(String userName);
 	List<StudentDTO> findAll();
 	UserInfo save(UserInfo userInfo);
+	UserInfo getLocalAuthByUserNameAndUserPass(String userName, String passWord);
 }

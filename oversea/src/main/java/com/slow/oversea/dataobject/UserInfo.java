@@ -1,5 +1,6 @@
 package com.slow.oversea.dataobject;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -17,10 +18,11 @@ public class UserInfo {
 	private Integer userId;
 	/*用户名*/
 	private String userName;
+	/*密码*/
+	@JsonIgnore
+	private String userPass;
 	/*用户年龄*/
 	private Integer age;
-	/*密码*/
-	private String userPass;
 	/*用户性别*/
 	private Integer gender;
 	/*用户国籍*/

@@ -14,5 +14,7 @@ public interface UniversityCategoryService {
 	UniversityCategory findByName(String name);
 	Integer findCountryId(Integer universityId);
 	String findUniversityName(Integer universityId);
-	List<UniversityCategory> findUniversityNameByCountryId(Integer countryId);
+	List<UniversityCategory> findUniversityByCountryId(Integer countryId);
+	void save(UniversityCategory universityCategory);
+	void delete(UniversityCategory universityCategory);
 }

@@ -31,4 +31,14 @@ public class CountryCategoryServiceImpl implements CountryCategoryService {
 	public CountryCategory findByName(String name) {
 		return repository.findByCountryName(name);
 	}
+
+	@Override
+	public void save(CountryCategory countryCategory) {
+		repository.save(countryCategory);
+	}
+
+	@Override
+	public void delete(CountryCategory countryCategory) {
+		repository.delete(countryCategory);
+	}
 }

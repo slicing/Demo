@@ -4,10 +4,10 @@
 <body>
 <div id="wrapper" class="toggled">
 
-<#--边栏sidebar-->
+    <#--边栏sidebar-->
     <#include "../common/nav.ftl">
 
-<#--主要内容content-->
+    <#--主要内容content-->
     <div id="page-content-wrapper">
         <div class="container-fluid">
             <div class="row clearfix">
@@ -15,32 +15,17 @@
                     <table class="table table-bordered table-condensed">
                         <thead>
                         <tr>
-                            <th>学生id</th>
-                            <th>学生姓名</th>
-                            <th>年龄</th>
-                            <th>性别</th>h>
-                            <th>国籍</th>
-                            <th>地址</th>
-                            <th>电话</th>
-                            <th colspan="2">操作</th>
+                            <th>类目id</th>
+                            <th>名字</th>
+                            <th>操作</th>
                         </tr>
                         </thead>
                         <tbody>
-
-                        <#list studentDTOList as studentDTO>
+                        <#list countryCategoryList as countryCategory>
                         <tr>
-                            <td>${studentDTO}</td>
-                            <td>${cartDTO.studentName}</td>
-                            <td>${cartDTO.studentCountry}</td>
-                            <td>${cartDTO.applicationCountry}</td>
-                            <td>${cartDTO.getApplicationStatusEnum().msg}</td>
-                            <td>${cartDTO.createTime}</td>
-                            <td><a href="/application/detail?tableId=${cartDTO.tableId}">详情</a></td>
-                            <td>
-                                <#if cartDTO.getApplicationStatusEnum().msg == "等待审核">
-                                    <a href="/application/under?tableId=${cartDTO.tableId}">修改</a>
-                                </#if>
-                            </td>
+                            <td>${countryCategory.countryId}</td>
+                            <td><a href="/oversea/university/country/list?countryId=${countryCategory.countryId}"> ${countryCategory.countryName}</a></td>
+                            <td><a href="/country/category/delete?categoryId=${countryCategory.countryId}">删除</a></td>
                         </tr>
                         </#list>
                         </tbody>
@@ -49,6 +34,7 @@
             </div>
         </div>
     </div>
+
 </div>
 </body>
 </html>

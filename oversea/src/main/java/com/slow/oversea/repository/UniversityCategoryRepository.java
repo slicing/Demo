@@ -18,7 +18,7 @@ public interface UniversityCategoryRepository extends JpaRepository<UniversityCa
 
 	@Query("SELECT  university.universityName from UniversityCategory university where university.universityId = ?1")
 	String findUniversityNameByUniversityId(Integer universityId);
-	@Query("SELECT  university.universityName from UniversityCategory university where university.countryId = ?1")
-	List<UniversityCategory> findUniversityNameByCountryId(Integer countryId);
+	@Query("SELECT  university from UniversityCategory university where university.countryId = ?1")
+	List<UniversityCategory> findUniversityByCountryId(Integer countryId);
 	UniversityCategory findByUniversityName(String name);
 }

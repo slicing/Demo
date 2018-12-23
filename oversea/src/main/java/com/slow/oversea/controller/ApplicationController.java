@@ -38,7 +38,7 @@ public class ApplicationController {
 	}
 
 	/**
-	 *
+	 *列表
 	 * @param map
 	 * @return
 	 */
@@ -50,7 +50,7 @@ public class ApplicationController {
 	}
 
 	/**
-	 *
+	 *详情
 	 * @param tableId
 	 * @param map
 	 * @return
@@ -107,7 +107,7 @@ public class ApplicationController {
 		}catch (OverSeaException e){
 			map.put("msg",e.getMessage());
 			map.put("url","/application/get/list");
-			return new ModelAndView("/common/error");
+			return new ModelAndView("common/error");
 		}
 		map.put("msg",ResultEnum.APPLICATION_ADOPT_SUCCESS);
 		map.put("url","/application/get/list");

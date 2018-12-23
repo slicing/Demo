@@ -12,8 +12,8 @@ import java.util.List;
  * @date 2018/12/17 22:40
  */
 public interface MajorInfoRepository extends JpaRepository<MajorInfo,Integer> {
-	@Query("Select major.universityId from MajorInfo major where major.majorId = ?1 ")
-	List<Integer> findUniversityIdByMajorId(Integer majorId);
+	@Query("Select major from MajorInfo major where major.universityId = ?1 ")
+	List<MajorInfo> findMajorInfoByUniversityId(Integer universityId);
 	List<MajorInfo> findByMajorId(Integer majorId);
 	@Query("select major.majorName from MajorInfo major where major.majorId = ?1 ")
 	String findMajorNameByMajorId(Integer majorId);

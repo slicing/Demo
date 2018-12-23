@@ -10,8 +10,8 @@ import java.util.List;
  */
 public interface MajorService {
 	MajorInfo findOne(Integer id);
-	List<MajorInfo> findByMajorId(Integer majorId);
+	List<MajorInfo> findMajorInfoByUniversityId(Integer universityId);
 	List<MajorInfo> findAll();
 	MajorInfo save(MajorInfo majorInfo);
-	List<Integer> findUniversityId(Integer majorId);
+	void delete(MajorInfo majorInfo);
 }

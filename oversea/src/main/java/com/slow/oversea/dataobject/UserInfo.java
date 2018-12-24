@@ -19,7 +19,6 @@ public class UserInfo {
 	/*用户名*/
 	private String userName;
 	/*密码*/
-	@JsonIgnore
 	private String userPass;
 	/*用户年龄*/
 	private Integer age;
@@ -28,8 +27,10 @@ public class UserInfo {
 	/*用户国籍*/
 	private Integer userNationalityId;
 	/*用户地址*/
+	@JsonIgnore
 	private String userAddress;
 	/*用户电话*/
+	@JsonIgnore
 	private String userTele;
 
 	public UserInfo(String userName, Integer age, String userPass, Integer gender, Integer userNationalityId, String userAddress, String userTele) {

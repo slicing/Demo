@@ -28,6 +28,18 @@ public class CountryCategoryController {
 	private CountryCategoryService categoryService;
 
 	/**
+	 * 用户端国家列表
+	 * @param map
+	 * @return
+	 */
+	@GetMapping("/student/list")
+	public ModelAndView studentList(Map<String,Object> map){
+		List<CountryCategory> countryCategoryList = categoryService.findAll();
+		map.put("countryCategoryList",countryCategoryList);
+		return new ModelAndView("student/list",map);
+	}
+
+	/**
 	 * 国家列表
 	 * @param map
 	 * @return

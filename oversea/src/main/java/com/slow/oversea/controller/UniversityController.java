@@ -74,6 +74,21 @@ public class UniversityController {
 		map.put("universityCategoryList",universityCategoryList);
 		return new ModelAndView("country/university",map);
 	}
+
+	/**
+	 * 客户端
+	 * 国家学校列表
+	 * @param countryId
+	 * @param map
+	 * @return
+	 */
+	@GetMapping("/student/country/list")
+	public ModelAndView getStudentList(@RequestParam(value = "countryId") Integer countryId,
+								Map<String,Object> map){
+		List<UniversityCategory> universityCategoryList = categoryService.findUniversityByCountryId(countryId);
+		map.put("universityCategoryList",universityCategoryList);
+		return new ModelAndView("student/university",map);
+	}
 	/**
 	 * 查询
 	 * @param countryId

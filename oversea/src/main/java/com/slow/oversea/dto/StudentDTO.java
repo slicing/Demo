@@ -1,5 +1,6 @@
 package com.slow.oversea.dto;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 
 import javax.persistence.GeneratedValue;
@@ -24,8 +25,10 @@ public class StudentDTO {
 	/*用户国籍*/
 	private Integer userNationalityId;
 	/*用户地址*/
+	@JsonIgnore
 	private String userAddress;
 	/*用户电话*/
+	@JsonIgnore
 	private String userTele;
 
 }

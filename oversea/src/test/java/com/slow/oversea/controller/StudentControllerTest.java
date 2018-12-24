@@ -1,6 +1,5 @@
 package com.slow.oversea.controller;
 
-import com.slow.oversea.converter.UserInfoTOStudentDTO;
 import com.slow.oversea.dataobject.UserInfo;
 import com.slow.oversea.dto.StudentDTO;
 import com.slow.oversea.service.UserInfoService;
@@ -9,10 +8,10 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
-import static org.junit.Assert.*;
 
 /**
  * @author Slicing
@@ -31,7 +30,7 @@ public class StudentControllerTest {
 			System.out.println(studentDTO);
 		}
 	}
-
+	@Transactional
 	@Test
 	public void findOne(){
 		UserInfo userInfo = userInfoService.findOne(1);

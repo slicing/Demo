@@ -26,6 +26,27 @@ public class MajorController {
 	@Autowired
 	private MajorService majorService;
 
+	/**
+	 * 专业列表
+	 * @param universityId
+	 * @param map
+	 * @return
+	 */
+	@GetMapping("/university/major/list")
+	public ModelAndView getStudentList(@RequestParam(value = "universityId") Integer universityId,
+								Map<String,Object> map){
+		List<MajorInfo> majorInfoList = majorService.findMajorInfoByUniversityId(universityId);
+		map.put("majorInfoList",majorInfoList);
+		return new ModelAndView("student/major",map);
+	}
+
+	/**
+	 * 客户端
+	 * 专业列表
+	 * @param universityId
+	 * @param map
+	 * @return
+	 */
 	@GetMapping("/university/list")
 	public ModelAndView getList(@RequestParam(value = "universityId") Integer universityId,
 								Map<String,Object> map){

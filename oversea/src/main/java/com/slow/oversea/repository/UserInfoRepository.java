@@ -11,6 +11,7 @@ import org.springframework.data.repository.query.Param;
  */
 public interface UserInfoRepository extends JpaRepository<UserInfo,Integer> {
 	UserInfo findByUserName(String userInfoName);
+	UserInfo findByUserNameAndUserPass(String userName,String userPass);
 	UserInfo queryLocalByUserNameAndUserPass(@Param("userName") String username, @Param("userPass") String password);
 
 }

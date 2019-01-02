@@ -7,10 +7,13 @@ import com.slow.oversea.exception.OverSeaException;
 import com.slow.oversea.service.ApplicationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
+
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 import java.util.Map;
 
@@ -134,5 +137,28 @@ public class ApplicationController {
 		map.put("msg",ResultEnum.APPLICATION_UNDER_SUCCESS);
 		map.put("url","/application/get/list");
 		return new ModelAndView("common/success",map);
+	}
+
+	/**
+	 * 创建申请表
+	 * @param map
+	 * @param request
+	 * @return
+	 */
+	@Transactional
+	@RequestMapping("/create")
+	public ModelAndView create(Map<String,Object> map, HttpServletRequest request){
+		ApplicationTable applicationTable = new ApplicationTable();
+		applicationTable.setStudentId(Integer.parseInt(request.getParameter("studentId")));
+		applicationTable.setStudentName(request.getParameter("studentName"));
+		applicationTable.setStudentCountry(request.getParameter("studentCountry"));
+		applicationTable.setStudentUniversity(request.getParameter("studentUniversity"));
+		applicationTable.setStudentMajor(request.getParameter("studentMajor"));
+		applicationTable.setApplicationCountry(request.getParameter("applicationCountry"));
+		applicationTable.setApplicationUniversity(request.getParameter("applicationUniversity"));
+		applicationTable.setApplicationMajor(request.getParameter("applicationMajor"));
+		applicationService.save(applicationTable);
+		map.put("",applicationService);
+		return new ModelAndView();
 	}
 }

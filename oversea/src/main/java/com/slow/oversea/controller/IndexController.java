@@ -1,6 +1,8 @@
 package com.slow.oversea.controller;
 
+import com.slow.oversea.dataobject.CountryCategory;
 import com.slow.oversea.dataobject.UserInfo;
+import com.slow.oversea.service.CountryCategoryService;
 import com.slow.oversea.service.UserInfoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -20,16 +22,19 @@ public class IndexController {
 	@Autowired
 	private UserInfoService userInfoService;
 
+	@Autowired
+	private CountryCategoryService categoryService;
+
 	@RequestMapping("/index")
 	public ModelAndView index(){
-		return new ModelAndView("student/index");
+		return new ModelAndView("student/login");
 	}
 	@RequestMapping("/addregister")
 	public ModelAndView register(HttpServletRequest request,Map<String,Object> map){
 		String username = request.getParameter("username");
 		Integer userAge = Integer.parseInt(request.getParameter("userAge"));
 		Integer userGender = Integer.parseInt(request.getParameter("userGender"));
-		String userCountry = request.getParameter("userCountry");
+		Integer userCountry = categoryService.findByName(request.getParameter("userCountry")).getCountryId();
 		String userAddress = request.getParameter("userAddress");
 		String userTele = request.getParameter("userTele");
 		String password = request.getParameter("password");
@@ -40,12 +45,16 @@ public class IndexController {
 			userInfo.setUserPass(password);
 			userInfo.setAge(userAge);
 			userInfo.setGender(userGender);
-			userInfo.setUserNationalityId();
+			userInfo.setUserNationalityId(userCountry);
 			userInfo.setUserAddress(userAddress);
 			userInfo.setUserTele(userTele);
 			userInfoService.save(userInfo);
-			
+			map.put("userInfoService",userInfoService);
+			map.put("url","student/login");
+			return new ModelAndView("common/success",map);
 		}
+		return new ModelAndView("student/login",map);
+
 	}
 
 }

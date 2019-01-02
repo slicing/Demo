@@ -21,4 +21,6 @@ public interface ApplicationService {
 	ApplicationTable adopt(ApplicationTable applicationTable);
 	/*正在审核*/
 	ApplicationTable under(ApplicationTable applicationTable);
+
+	void save(ApplicationTable applicationTable);
 }

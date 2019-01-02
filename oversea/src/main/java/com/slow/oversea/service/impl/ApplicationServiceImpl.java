@@ -125,5 +125,15 @@ public class ApplicationServiceImpl implements ApplicationService {
 		return applicationTable;
 	}
 
+	/**
+	 * 保存
+	 * @param applicationTable
+	 */
+
+	@Override
+	public void save(ApplicationTable applicationTable) {
+		repository.save(applicationTable);
+	}
+
 
 }

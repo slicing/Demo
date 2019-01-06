@@ -12,28 +12,16 @@ import javax.persistence.*;
  */
 @Data
 @Entity
+@Table(name = "user")
 public class User {
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 	private String name;
 	private String email;
 
-	protected User(){
-
-	}
-	public User(Long id, String name, String email) {
-		this.id = id;
+	public User(String name, String email) {
 		this.name = name;
 		this.email = email;
-	}
-
-	@Override
-	public String toString() {
-		return "User{" +
-				"id=" + id +
-				", name='" + name + '\'' +
-				", email='" + email + '\'' +
-				'}';
 	}
 }

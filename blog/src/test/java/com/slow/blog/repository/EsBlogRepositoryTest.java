@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -34,7 +35,7 @@ public class EsBlogRepositoryTest {
 
 	@Test
 	public void findDistinctByTitleContainingOrSummaryContainingOrContentContaining() {
-		PageRequest pageable = PageRequest.of(0,20);
+		Pageable pageable = PageRequest.of(0,20);
 		String title = "思";
 		String summary = "相思";
 		String content = "相思";

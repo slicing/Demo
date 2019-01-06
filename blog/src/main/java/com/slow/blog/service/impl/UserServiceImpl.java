@@ -16,7 +16,7 @@ import java.util.concurrent.atomic.AtomicLong;
  */
 @Service
 public class UserServiceImpl implements UserService {
-	private static AtomicLong counter = new AtomicLong();
+
 	@Autowired
 	private UserRepository repository;
 

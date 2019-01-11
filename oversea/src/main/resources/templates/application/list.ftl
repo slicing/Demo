@@ -18,7 +18,7 @@
                             <th>申请表id</th>
                             <th>学生姓名</th>
                             <th>国籍</th>
-                            <th>申请国家</th>h>
+                            <th>申请国家</th>
                             <th>申请状态</th>
                             <th>创建时间</th>
                             <th colspan="2">操作</th>
